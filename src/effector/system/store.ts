@@ -1,12 +1,13 @@
 import { SystemState } from "./types";
 import { SystemDomain } from "./domain";
-import { updateSession } from "./events";
+import { clearSession, updateSession } from "./events";
 
 const initialState: SystemState = {
   loggedIn: false,
   session: '',
-  userName: ''
+  userName: 'anonymous'
 };
 
 export const SystemStore = SystemDomain.store<SystemState>(initialState)
-  .on(updateSession, (state, payload) => ({ ...state, ...payload }));
+  .on(updateSession, (state, payload) => ({ ...state, ...payload }))
+  .reset(clearSession);
