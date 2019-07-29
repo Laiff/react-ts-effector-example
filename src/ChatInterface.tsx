@@ -23,6 +23,7 @@ forward({
 
 export const ChatInterface: React.FC = () => {
   const { userName } = useStore(SystemStore);
+  const pending = useStore(sendMessage.pending);
 
   const [message, updateMessage] = useState("");
 
@@ -51,7 +52,7 @@ export const ChatInterface: React.FC = () => {
         className="chat-input"
         placeholder="Type a message..."
       />
-      <button onClick={send}>Send</button>
+      <button onClick={send} disabled={pending}>{ pending ? "Loading" : "Send"}</button>
       <button onClick={login}>Login</button>
       <button onClick={logout}>Logout</button>
     </div>

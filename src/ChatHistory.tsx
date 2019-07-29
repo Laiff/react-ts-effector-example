@@ -5,6 +5,7 @@ import { deleteMessage } from "./effector/chat/events.";
 
 export const ChatHistory: React.FC = () => {
   const messages = useStore(MessageList);
+  const pending = useStore(deleteMessage.pending);
 
   return (
     <div className="chat-history">
@@ -12,7 +13,11 @@ export const ChatHistory: React.FC = () => {
         <div className="message-item" key={message.timestamp}>
           <h3>From: {message.user}</h3>
           <p>{message.message}</p>
-          <button onClick={() => deleteMessage(message)}>delete</button>
+          <button
+            onClick={() => deleteMessage(message)}
+            disabled={pending}>
+            { pending ? "Deleting" : "Delete"}
+          </button>
         </div>
       ))}
     </div>
