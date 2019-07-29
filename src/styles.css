@@ -37,17 +37,22 @@ body,
   padding: 10px 15px;
 }
 
+.chat-interface button:first-of-type {
+  background-color: green;
+  border-bottom-right-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
 .chat-interface button {
   cursor: pointer;
   padding: 10px 14px;
+  margin-right: 16px;
   font-size: 1em;
   border: 0;
   user-select: none;
   outline: none;
   color: white;
-  background-color: green;
-  border-bottom-right-radius: 5px;
-  border-top-right-radius: 5px;
+  background-color: grey;
 }
 
 .message-item {
