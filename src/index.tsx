@@ -2,15 +2,12 @@ import * as React from "react";
 import { render } from "react-dom";
 
 import "./styles.css";
+import { deleteMessage, sendMessage } from "./effector/chat/events.";
+import { MessageApi } from "./api/MessageApi";
+import { App } from "./App";
 
-function App() {
-  return (
-    <div className="App">
-      <h1>Hello CodeSandbox</h1>
-      <h2>Start editing to see some magic happen!</h2>
-    </div>
-  );
-}
+sendMessage.use(MessageApi.sendMessage);
+deleteMessage.use(MessageApi.deleteMessage);
 
 const rootElement = document.getElementById("root");
 render(<App />, rootElement);
